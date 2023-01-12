@@ -16,10 +16,13 @@ class Contacts(BaseModel):
     email: str
 
 
-class BaseInputPars(BaseModel):
+class BasePars(BaseModel):
+    address: Address
+    allow_messages: bool = True
+    billing_type: str = 'packageOrSingle'
+    business_area: int = 1
+    contacts: Contacts
     description: str
     employment: str
-    address: Address
     name: str
     salary: Salary
-    contacts: Contacts
