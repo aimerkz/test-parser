@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, root_validator
 
 
 class Address(BaseModel):
@@ -26,3 +26,8 @@ class BasePars(BaseModel):
     employment: str
     name: str
     salary: Salary
+
+    @root_validator()
+    def validate(cls, values):
+        values['address'] = values['address'].value
+        return values
