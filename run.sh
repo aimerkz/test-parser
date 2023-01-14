@@ -1,22 +1,33 @@
 #!/bin/bash
 
 NAME="test-parser"
+FILE="parser/static/data.json"
+TIME=2
 
 echo "Starting" $NAME
-sleep 2
+sleep $TIME
 
 echo "Creating and activating a virtual environment"
-sleep 2
+sleep $TIME
 
-python3 -m ./venv venv
-source ./venv/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 
 echo "Installing dependencies"
-sleep 2
+sleep $TIME
 
 pip3 install -r requirements.txt
 
 echo "Running"
-sleep 2
+sleep $TIME
+
+echo "Input data"
+echo " $(cat $FILE)"
+
+echo "Output data"
+sleep $TIME
 
 python3 main.py
+sleep $TIME
+
+echo "Done"
