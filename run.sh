@@ -1,12 +1,9 @@
 #!/bin/bash
 
 NAME="test-parser"
-DJANGODIR=test-parser/
 
 echo "Starting" $NAME
 sleep 2
-
-cd $DJANGODIR
 
 echo "Creating and activating a virtual environment"
 sleep 2

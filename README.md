@@ -13,7 +13,10 @@
 ```sh
 git clone https://github.com/aimerkz/test-parser.git
 ```
-
+- Перейдите в директорию test-parser:
+```sh
+cd test-parser
+```
 Запустите скрипт run.sh:
 ```sh
 bash run.sh
