@@ -44,13 +44,23 @@ class BasePars(BaseModel):
     business_area: int = 1
     contacts: Contacts
     description: str
+    experience: str = {'id': 'noMatter'}
+    html_tags: bool = True
+    image_url: str = 'https://img.hhcdn.ru/employer-logo/3410666.jpeg'
     name: str
     salary: Salary
+    employment: str = Field(alias='shelude')
+
+    class Config:
+        allow_population_by_field_name = True
 
     @root_validator()
-    def validate(cls, values):
+    def validate_base(cls, values):
         lat = values['address'].lat
         lng = values['address'].lat
+        values['employment'] = {'id': values['employment']}
+        values['salary_range'] = {'from': values['salary'].from_, 'to': values['salary'].to}
+        values['salary'] = values['salary'].to
         values['coordinates'] = {'latitude': lat, 'longitude': lng}
         values['address'] = values['address'].value
         return values
