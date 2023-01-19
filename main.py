@@ -1,5 +1,6 @@
 from pathlib import Path
 from pprint import pprint
+
 from pydantic import ValidationError
 from parser.models import BasePars
 
@@ -7,7 +8,7 @@ from parser.models import BasePars
 FILE = Path('parser/static/data.json')
 
 
-def read():
+def main():
     try:
         res = BasePars.parse_file(FILE)
     except ValidationError as error:
@@ -17,4 +18,4 @@ def read():
 
 
 if __name__ == '__main__':
-    read()
+    main()

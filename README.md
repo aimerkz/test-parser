@@ -21,7 +21,7 @@ cd test-parser
 ```sh
 bash run.sh
 ```
-
+---
 ***Ручной способ:***
 
 Клонируйте репозиторий: 
@@ -44,3 +44,14 @@ pip3 install -r requirements.txt
 - Запустите скрипт:
 ```sh
 python3 main.py
+```
+---
+***Запуск тестов:***
+- Перейдите в директорию parser:
+```sh
+cd parser
+```
+- Запустите тесты:
+```sh
+pytest
+```

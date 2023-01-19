@@ -1,4 +1,7 @@
+from pprint import pprint
+from jsondiff import diff
 from pydantic import BaseModel, Field, root_validator
+from parser.conftest import output_data
 
 
 class Address(BaseModel):
@@ -58,9 +61,16 @@ class BasePars(BaseModel):
     def validate_base(cls, values):
         lat = values['address'].lat
         lng = values['address'].lng
-        values['employment'] = {'id': values['employment']}
         values['salary_range'] = {'from': values['salary'].from_, 'to': values['salary'].to}
         values['salary'] = values['salary'].to
         values['coordinates'] = {'latitude': lat, 'longitude': lng}
+        values['employment'] = {'id': values['employment']}
         values['address'] = values['address'].value
         return values
+
+
+def test_base(input_data):
+    res = BasePars.parse_obj(input_data)
+    res_final = pprint(res.dict(by_alias=True))
+    ass = diff(res_final, pprint(output_data()))
+    assert len(ass) == 0
